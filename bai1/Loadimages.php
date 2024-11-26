@@ -1,6 +1,6 @@
 <?php
-
-$flower = [
+if(!isset($_SESSION['flower'])){
+$_SESSION['flower'] = [
     [
         "name" => "Hoa Dạ Yến Thảo",
         "description" => "Dạ yến thảo là lựa chọn thích hợp cho những ai yêu thích trồng hoa làm đẹp nhà ở. Hoa có thể nở rực quanh năm, kể cả tiết trời se lạnh của mùa xuân hay cả những ngày nắng nóng cao điểm của mùa hè. Dạ yến thảo được trồng ở chậu treo nơi cửa sổ hay ban công, dáng hoa mềm mại, sắc màu đa dạng nên được yêu thích vô cùng.",
@@ -37,4 +37,34 @@ $flower = [
         "image" => "images/HoaHuynhAnh.jpg"
     ]
 ];
-?>
+}
+
+function add($name, $description, $image)
+{
+    $_SESSION['flowers'][] = [
+        'name' => $name,
+        'description' => $description,
+        'image' => $image
+    ];
+}
+
+function updateFlower($index, $newName, $newDescription, $newImage)
+{
+    if (isset($_SESSION['flowers'][$index])) {
+        $_SESSION['flowers'][$index] = [
+            'name' => $newName,
+            'description' => $newDescription,
+            'image' => $newImage ?: $_SESSION['flowers'][$index]['image']
+        ];
+        return true;
+    }
+    return false;
+}
+function deleteFlower($index)
+{
+    if (isset($_SESSION['flowers'][$index])) {
+        array_splice($_SESSION['flowers'], $index, 1);
+        return true;
+    }
+    return false;
+}
