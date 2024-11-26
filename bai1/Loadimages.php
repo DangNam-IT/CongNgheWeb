@@ -1,6 +1,6 @@
 <?php
-if(!isset($_SESSION['flower'])){
-$_SESSION['flower'] = [
+if(!isset($_SESSION['flowers'])){
+$_SESSION['flowers'] = [
     [
         "name" => "Hoa Dạ Yến Thảo",
         "description" => "Dạ yến thảo là lựa chọn thích hợp cho những ai yêu thích trồng hoa làm đẹp nhà ở. Hoa có thể nở rực quanh năm, kể cả tiết trời se lạnh của mùa xuân hay cả những ngày nắng nóng cao điểm của mùa hè. Dạ yến thảo được trồng ở chậu treo nơi cửa sổ hay ban công, dáng hoa mềm mại, sắc màu đa dạng nên được yêu thích vô cùng.",
