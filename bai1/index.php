@@ -1,4 +1,4 @@
-<?php include 'data.php';
+<?php include 'Loadimages.php';
 $flowers = isset($_SESSION['flowers']) ? $_SESSION['flowers'] : [];
 ?>
 <!DOCTYPE html>
