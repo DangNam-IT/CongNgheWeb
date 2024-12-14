@@ -2,14 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
-
-class Controller
-{
-    // 
-    
-}
-
-
+class Controller {}
 class HomeController extends Controller
 {
 /**
@@ -18,6 +11,6 @@ class HomeController extends Controller
    public function index()
     {
         $posts = Post::all();
-        return view(view: "home",data:compact("posts"));
+        return view(view: "/posts/index",data:compact("posts"));
     }
 }

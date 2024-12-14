@@ -1,28 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\post;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    // public function index()
-    // {
-    //     //
-        
-    //     $posts = Post::all();
-    //     return view(view: "home",data:compact("posts"));
-    // }
-
-    /**
      * Show the form for creating a new resource.
      */
+    public function index(){
+        $posts = Post::all();
+        return view("posts.index",compact( "posts"));
+    }
     public function create()
     {
         //
+        return view("posts.create");
     }
 
     /**
@@ -31,6 +25,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required|max:255',
+            'content'=> 'required',
+        ]);
+        Post::create($request->all());
+        return redirect()->route('posts.index')->with('success','Post created successfully');
     }
 
     /**
@@ -39,6 +39,8 @@ class PostController extends Controller
     public function show(string $id)
     {
         //
+        $post = Post::find($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -47,6 +49,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         //
+        $post = Post::find($id);
+        return view('posts.edit',compact('post'));
     }
 
     /**
@@ -55,6 +59,13 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'title'=> 'required|max:255',
+            'content'=> 'required',
+        ]);
+        $post = Post::find($id);
+        $post->update($request->all());
+        return redirect()->route('posts.index')->with('success','Post updated successfully');
     }
 
     /**
@@ -63,5 +74,8 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('posts.index')->with('success','Post deleted successfully');
     }
 }

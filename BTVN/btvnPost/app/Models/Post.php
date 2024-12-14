@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App; 
 use Illuminate\Database\Eloquent\Model;
+use btvnPost\Database\Seedeers\DatabaseSeeder;
 
 class Post extends Model
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
-    use HasFactory;
+    protected $fillable =  [
+        'title',
+        'content',
+    ];
+   
 }
