@@ -20,7 +20,7 @@ crossorigin="anonymous">
     @method('PUT')
     <div class="form-group">
         <label for="title">Người báo cáo sự cố</label>
-        <input type="text" name="title" class="form-control" value="{{ $issue->reported_by }}" required>
+        <input type="text" name="reported_by" class="form-control" value="{{ $issue->reported_by }}" required>
     </div>
     <div class="form-group">
         <label for="computer_id">Tên máy tính</label>
@@ -32,7 +32,7 @@ crossorigin="anonymous">
     </div>
     <div class="form-group">    
         <label for="event_time">Thời gian báo cáo</label>
-        <input type="datetime-local" id="event_time" name="event_time">
+        <input type="datetime-local" id="event_time" name="reported_date" required>
     </div>
     <div class="form-group">
         <label for="description">Mô tả chi tiết vấn đề</label>
@@ -49,7 +49,7 @@ crossorigin="anonymous">
     
     <div class="form-group">
         <label for="status">Trạng thái hiện tại</label>
-        <select name="id" class="form-control" required>
+        <select name="status" class="form-control" required>
             <option value="Open" {{ $issue->status == 'Open' ? 'selected' : '' }}>Open</option>
             <option value="In Progress" {{ $issue->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
             <option value="Resolved" {{ $issue->status == 'Resolved' ? 'selected' : '' }}>Resolved</option>
