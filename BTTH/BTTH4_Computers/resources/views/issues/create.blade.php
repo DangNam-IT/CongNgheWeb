@@ -16,22 +16,22 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
         @csrf
         <div class="form-group">
             <label for="title">Người báo cáo sự cố</label>
-            <select name="id" class="form-control" required>
+            <select name="reported_by" class="form-control" required>
                 <option value="Leader" >Leader</option>
                 <option value="Manager">Manager</option>
                 <option value="Engineer">Engineer</option>
             </select>        </div>
         <div class="form-group">
             <label for="computer_id">Tên máy tính</label>
-            <select name="computer_id" class="form-control" required>
+            <select name="computer_id" id ="computer_id"class="form-control" required>
                 @foreach($computers as $computer)
-                <option value="{{ $computer->id }}" >{{$computer->computer_name}}</option>
+                    <option value="{{ $computer->id }}" >{{$computer->computer_name}}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">    
             <label for="event_time">Thời gian báo cáo</label>
-            <input type="datetime-local" id="event_time" name="event_time">
+            <input type="datetime-local" id="event_time" name="reported_date" required>
         </div>
         <div class="form-group">
             <label for="description">Mô tả chi tiết vấn đề</label>
@@ -48,7 +48,7 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
         
         <div class="form-group">
             <label for="status">Trạng thái hiện tại</label>
-            <select name="id" class="form-control" required>
+            <select name="status" class="form-control" required>
                 <option value="Open" >Open</option>
                 <option value="In Progress">In Progress</option>
                 <option value="Resolved">Resolved</option>
