@@ -34,8 +34,7 @@ class IssueController extends Controller
     {
         //
         $computers = Computer::all();
-        $issues = Issue::all();
-        return view('issues.create', compact('computers', 'issues'));
+        return view('issues.create', compact('computers'));
     }
 
     /**
@@ -86,7 +85,7 @@ class IssueController extends Controller
         $request->validate([
             'computer_id' => 'required',
             'reported_by' => 'required',
-            'reported_date' => 'nullable|datetime',
+            'reported_date' => 'required|date',
             'description' => 'required',
             'urgency' => 'required',
             'status' => 'required',
@@ -100,7 +99,7 @@ class IssueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
         $issues = Issue::findOrFail($id);
