@@ -48,7 +48,7 @@ class IssueController extends Controller
             [
                 'computer_id' => 'required',
                 'reported_by' =>'required|max:50',
-                'reported_date' => 'required',
+                'reported_date' => 'required|date',
                 'description'=> 'required',
                 'urgency' => 'required',
                 'status'=> 'required'
