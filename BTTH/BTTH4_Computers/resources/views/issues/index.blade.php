@@ -144,7 +144,7 @@ table.table td .add {
 									<form action="{{ route('issues.destroy', $issue->id)}}" method="post">
 										@csrf
 										@method('DELETE' )
-										<button type="submit" class="btn btn-danger btnsm">Delete</button>
+										<button type="submit" class="btn btn-danger btnsm"><i class="material-icons">&#xE872;</i></button>
 									</form>
 								</div>
                             </td>
