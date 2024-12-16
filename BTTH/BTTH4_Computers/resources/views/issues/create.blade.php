@@ -16,11 +16,8 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
         @csrf
         <div class="form-group">
             <label for="title">Người báo cáo sự cố</label>
-            <select name="reported_by" class="form-control" required>
-                <option value="Leader" >Leader</option>
-                <option value="Manager">Manager</option>
-                <option value="Engineer">Engineer</option>
-            </select>        </div>
+            <input type="text" class="form-control" name="reported_by" required>    
+        </div>
         <div class="form-group">
             <label for="computer_id">Tên máy tính</label>
             <select name="computer_id" id ="computer_id"class="form-control" required>
