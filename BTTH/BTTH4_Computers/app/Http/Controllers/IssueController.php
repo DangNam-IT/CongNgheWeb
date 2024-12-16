@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Issue;
 use Illuminate\Http\Request;
+use App\Models\Computer;
 
 class IssueController extends Controller
 {
@@ -13,7 +14,7 @@ class IssueController extends Controller
     public function index()
     {
         //
-        $issues = Issue::with('computers')->get();
+        $issues = Issue::with('computer')->get();
         return view('issues.index', compact('issues'));
 
         // hiển thị theo kiểu phân trang
@@ -32,8 +33,9 @@ class IssueController extends Controller
     public function create()
     {
         //
+        $computers = Computer::all();
         $issues = Issue::all();
-        return view('issues.create', compact('computers'));
+        return view('issues.create', compact('computers', 'issues'));
     }
 
     /**
@@ -44,12 +46,12 @@ class IssueController extends Controller
         //
         $request->validate(
             [
-                'computer_name' => 'required|max:50',
-                'model' =>'required|max:100',
-                'operating_system' => 'required|max:50',
-                'processor'=> 'required|max:50',
-                'memory' => 'required',
-                'available'=> 'required'
+                'computer_id' => 'required',
+                'reported_by' =>'required|max:50',
+                'reported_date' => 'required',
+                'description'=> 'required',
+                'urgency' => 'required',
+                'status'=> 'required'
             ]
         );
         Issue::create($request->all());
@@ -67,11 +69,12 @@ class IssueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
-        $issues = Issue::findOrFail($id);
-        return view('issues.edit', compact('issues', 'computers'));
+        $issue = Issue::findOrFail($id);
+        $computers = Computer::all();
+        return view('issues.edit', compact('issue', 'computers'));
     }
 
     /**
