@@ -9,6 +9,6 @@ class Issue extends Model
     //
     protected $fillable = ['computer_id','reported_by','reported_date','description', 'urgency', 'status'];
     public function computer(){
-        return $this->belongsTo(Computer::class);
+        return $this->belongsTo(Computer::class,'computer_id');
     }
 }
