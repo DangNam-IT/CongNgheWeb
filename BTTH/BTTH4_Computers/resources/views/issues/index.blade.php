@@ -140,7 +140,13 @@ table.table td .add {
                             <td>{{$issue ->status}}</td>
                             <td>
                                 <a href="{{route('issues.edit', $issue->id)}}"><i class="material-icons">&#xE254;</i></a>
-                                <a href="{{route('issues.destroy', $issue->id)}}"><i class="material-icons">&#xE872;</i></a>
+                                <div class="col-sm">
+									<form action="{{ route('issues.destroy', $issue->id)}}" method="post">
+										@csrf
+										@method('DELETE' )
+										<button type="submit" class="btn btn-danger btnsm">Delete</button>
+									</form>
+								</div>
                             </td>
                         </tr>
                     @endforeach
